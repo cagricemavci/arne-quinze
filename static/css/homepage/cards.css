@@ -1,0 +1,53 @@
+.cards__container{
+    margin: 2rem 2rem 3rem 2rem;
+}
+
+.cards__title__link a{
+    color: #003cff;
+}
+
+.cards__title{
+    margin-bottom: 2rem;
+}
+
+
+.cards__wrapper{
+    margin-bottom: 3rem;
+}
+
+.cards__list{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.cards__item{
+    flex-basis: 20rem;
+    max-width: 100%;
+    flex-grow: 1;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cards__item__img{
+    margin-bottom: 2rem;
+}
+
+.cards__item__link a{
+    border-bottom: 3px #000 solid;
+    font-weight: bold;
+}
+
+
+.cards__item__content h4{
+    margin-bottom: 1rem;
+}
+
+.cards__item__content h2{
+    margin-bottom: 1rem;
+}
+
+.cards__item__content p{
+    margin-bottom: 1rem;
+}

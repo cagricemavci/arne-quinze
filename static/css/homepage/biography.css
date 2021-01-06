@@ -1,0 +1,19 @@
+.article__biography {
+    margin: 3rem 2rem 5rem 2rem;
+}
+
+.article__biography__img {
+    margin-bottom: 3rem;
+}
+
+.article__biography__content h3 {
+    margin-bottom: 1rem;
+}
+
+.article__biography__content p {
+    margin-bottom: 1rem;
+}
+
+.article__biograpgy__link a {
+    font-weight: bolder;
+}

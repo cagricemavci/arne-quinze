@@ -1,0 +1,25 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.h-layout {
+    margin: auto;
+    width: 90rem;
+    max-width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.offset--left {
+    width: calc(100% + 8vw);
+    margin-left: -8vw;
+}
+
+.offset--right {
+    width: calc(100% + 8vw);
+    margin-right: -8vw;
+}

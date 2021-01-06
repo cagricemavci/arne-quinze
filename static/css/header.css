@@ -1,0 +1,28 @@
+header {
+    margin: 3rem 2rem 2rem 2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.nav__list {
+    flex-basis: 75%;
+}
+
+.nav__item {
+    margin: 0.5rem auto;
+
+}
+
+.nav__item a {
+    font-size: 2rem;
+}
+
+.nav__brand {
+    flex-basis: 10rem;
+    max-width: 100%;
+}

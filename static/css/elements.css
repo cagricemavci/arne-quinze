@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    color: #0000ff;
+}
+
+svg{
+    width: 3rem;
+}
+
+a:hover svg{
+    fill: #0000ff;
+}
+
+img {
+    width: 100%;
+}
+
+
+h2 {
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+    color: #787878;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}

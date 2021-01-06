@@ -1,0 +1,28 @@
+.article__eyecatcher {
+    margin: 2rem 2rem 3rem 2rem;
+}
+
+.eyecatcher__img {
+    margin-bottom: 2rem;
+}
+
+.eyecatcher__content {
+    margin-bottom: 3rem;
+}
+
+.eyecatcher__content h4 {
+    margin-bottom: 1rem;
+}
+
+.eyecatcher__content h2 {
+    margin-bottom: 1rem;
+}
+
+.eyecatcher__content p {
+    margin-bottom: 1rem;
+}
+
+.eyecatcher__link a {
+    border-bottom: 3px #000 solid;
+    font-weight: bold;
+}
