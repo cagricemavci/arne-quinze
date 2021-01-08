@@ -10,10 +10,23 @@
     max-width: 100%;
 }
 
+.text--centered{
+    text-align: center;
+}
+
 .hidden {
     display: none;
 }
+.margin--bottom--l{
+    margin-bottom: 5rem;
+}
+.margin--bottom--m{
+    margin-bottom: 3rem;
+}
 
+.margin--bottom--s{
+    margin-bottom: 1.6rem;
+}
 .offset--left {
     width: calc(100% + 8vw);
     margin-left: -8vw;

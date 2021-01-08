@@ -1,0 +1,86 @@
+.biography h1{
+    font-size: 2.1rem;
+}
+
+.biography p{
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+}
+
+.biography h2{
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.article__biography__content{
+    margin-bottom: 5rem;
+}
+
+.biography__content{
+    margin-bottom: 3rem;
+}
+
+
+.biography__content h4{
+    color: #000;
+    font-weight: 400;
+}
+
+.biography__quote{
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+.biography__quote blockquote{
+    margin-bottom: 1.8rem;
+}
+
+.biography__quote cite::before{
+    content: '-';
+}
+
+.biography__text--centered{
+    text-align: center;
+}
+
+.biography__text--centered h2{
+    margin-bottom: 2rem;
+}
+
+.biography__text--centered p{
+    margin-bottom: 1.6rem;
+}
+
+.biography__mix-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.mix-content__item{
+    flex-basis: 100%;
+    flex-grow: 1;
+
+    margin-bottom: 2rem;
+}
+
+.mix-content__item p{
+    margin-bottom: 1rem;
+}
+
+.biography__img-cards{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    margin-bottom: 5rem;
+}
+
+.img-cards__item{
+    flex-grow: 1;
+    flex-basis: 100%;
+    margin-bottom: 2rem;
+}
