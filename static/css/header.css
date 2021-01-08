@@ -26,3 +26,8 @@ nav {
     flex-basis: 10rem;
     max-width: 100%;
 }
+
+.current a{
+    border-bottom: 3px solid #0000ff;
+    color: #0000ff;
+}

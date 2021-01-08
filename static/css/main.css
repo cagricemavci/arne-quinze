@@ -23,3 +23,14 @@
     width: calc(100% + 8vw);
     margin-right: -8vw;
 }
+
+#goTopButton{
+    cursor: pointer;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: black;
+    border-radius: 50%;
+}

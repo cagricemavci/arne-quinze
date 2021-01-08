@@ -10,13 +10,14 @@ footer {
 
 .footer__social__list {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
 
 .footer__social__item {
     flex-basis: 45%;
+    margin-bottom: 1rem;
 }
 
 .footer__social__item a {
