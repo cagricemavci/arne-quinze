@@ -1,0 +1,132 @@
+article {
+    margin-bottom: 3rem;
+}
+
+.press .back-to-overview h3 {
+    color: #000;
+    font-size: 1.8rem;
+    text-align: right;
+}
+
+.press .back-to-overview h3:hover {
+    color: #003Cff;
+    text-decoration: underline;
+}
+
+.press h3 {
+    color: #787878;
+    font-size: 1rem;
+
+}
+
+.press h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0.4rem;
+}
+
+.press p {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: lighter;
+    line-height: 1.5;
+}
+
+.press ul {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.press li {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    list-style: disc;
+}
+
+.press a {
+    font-weight: bolder;
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+.press h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-top: 0.4rem;
+    line-height: 1.2;
+    font-weight: lighter;
+}
+
+.docus-files{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.docus-files li{
+    flex-basis: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    border: 1px solid #787878;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+@media(min-width: 50rem){
+    .docus-files li {
+        flex-basis: 30%;
+        margin-right: 1rem;
+    }
+}
+
+.docus-files div{
+    flex-basis: 100%;
+}
+
+.docus-files__icon svg{
+    width: 3rem;
+    max-width: 100%;
+}
+
+.docus-files__link a{
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+.docus-files__file-size p{
+    font-size: 0.8rem;
+}
+
+
+.press__images{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-wrap: wrap;
+
+}
+
+.press__images li{
+    flex-basis: 40%;
+    flex-grow: 1;
+    list-style: none;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media(min-width:50rem) {
+    .press__images li{
+        flex-basis: 20%;
+    }
+}
+
+.press__image__link a{
+    text-decoration: underline;
+    font-size: 1rem;
+}

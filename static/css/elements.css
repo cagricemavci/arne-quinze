@@ -16,7 +16,7 @@ a {
 }
 
 a:hover{
-    color: #0000ff;
+    color: #003cff ;
 }
 
 svg{
@@ -24,7 +24,7 @@ svg{
 }
 
 a:hover svg{
-    fill: #0000ff;
+    fill: #003cff ;
 }
 
 img {

@@ -41,20 +41,19 @@
         },
         populatePress(json){
             //start populating the pressData
-            console.log('populating the received data has started...')
+            console.log('populating with the received data has started...')
             let $pressReleasesUL = document.querySelector('#press-releases')
             let $inThePressUL = document.querySelector('#in-the-press')
             let strInThePress = "";
             let strPressReleases = "";
 
             json.forEach(obj => {
-                console.log(obj)
                 if(obj.pressType === 'In the press'){
                     strInThePress += `
                     <li class="cards__item">
                         <section class="cards__item__img">
                             <img src="${obj.images[0]}"
-                                alt="">
+                                alt="image of ${obj.titel}" loading="lazy">
                         </section>
                         <section class="cards__item__content">
                             <div>
@@ -98,7 +97,7 @@
                         </section>
                     </li> `
                 } else {
-
+                    console.error('invalid json value', obj)
                 }
 
                 $pressReleasesUL.innerHTML = strPressReleases;
@@ -108,7 +107,10 @@
         },
         createScrollTop() {
             let $body = document.querySelector('body')
-            $body.innerHTML += `<div id="goTopButton" class="hidden"></div>`
+            $body.innerHTML += 
+            `<div id="goTopButton" class="hidden">
+                <h3>Go to top</h3>
+            </div>`
         },
         hideGoTop () {
             this.$goTopBtn = document.querySelector("#goTopButton")
@@ -134,8 +136,9 @@
             //start populating the navitems in de navigation list class
             let $navbarUL = document.querySelector('.nav__list');
             $navbarUL.innerHTML = navItems.map(item => {
+                console.log('highlighting current page in the navigation...', currentPath, 'with the following items: ', item)
                 //highlight the current page in the navigation list items, by adding the class "current" to the list item
-                if(currentPath === item.url) {
+                if(currentPath.includes(item.url)) {
                     return `
                     <li class="nav__item current">
                         <a href="${item.url}">
