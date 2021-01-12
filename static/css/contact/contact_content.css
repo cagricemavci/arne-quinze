@@ -22,8 +22,9 @@
 }
 
 .contact__list section{
-    flex-basis: 100%;
-    flex-grow: 1;
+    flex-basis: 30rem;
+    max-width: 100%;
+    flex-grow: 0;
 
     margin-bottom: 3rem;
 }
@@ -83,3 +84,4 @@
     color: #fff;
     cursor: pointer;
 }
+

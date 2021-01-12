@@ -15,11 +15,16 @@ footer {
     flex-wrap: wrap;
 }
 
+
 .footer__social__item {
     flex-basis: 45%;
     margin-bottom: 1rem;
 }
-
+@media(min-width: 50rem) {
+    .footer__social__item {
+        flex-basis: 15%;
+    }
+}
 .footer__social__item a {
     display: flex;
     flex-wrap: wrap;
@@ -46,6 +51,7 @@ footer {
 }
 
 .footer__mail form label {
+    flex-basis: 100%;
     margin-bottom: 1rem;
     font-size: 2rem;
 }
@@ -57,11 +63,41 @@ footer {
     border: 1px #575757 solid;
 }
 
+@media(min-width: 50rem) {
+    .footer__mail form input {
+        flex-basis: 33%;
+    }
+}
+.footer__insta{
+    margin: 2rem;
+}
+
+@media(min-width: 50rem) {
+    .footer__insta{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
 .insta__title{
+
+    flex-basis: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+@media(min-width: 50rem) {
+    .insta__title{
+        justify-content: space-around;
+    }
+}
+
+.insta__feed{
+    flex-basis: 50%;
 }
 
 .insta__feed__list{
@@ -69,6 +105,12 @@ footer {
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
+}
+
+@media(min-width: 50rem) {
+    .insta__feed__list{
+        flex-wrap: nowrap;
+    }
 }
 
 .insta__feed__item{
@@ -79,8 +121,11 @@ footer {
     margin-bottom: 1rem;
 }
 
-.footer__insta{
-    margin: 2rem;
+@media(min-width: 50rem) {
+    .insta__feed__item{
+        flex-basis: 20%;
+        margin-right: 0.2rem;
+    }
 }
 
 .footer__legal{

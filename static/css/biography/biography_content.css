@@ -1,76 +1,93 @@
-.biography h1{
+.biography h1 {
     font-size: 2.1rem;
 }
 
-.biography p{
+.biography p {
     font-size: 1.2rem;
     line-height: 1.8rem;
 }
 
-.biography h2{
+.biography h2 {
     font-size: 1.8rem;
     font-weight: 400;
 }
 
-.article__biography__content{
+.article__biography__content {
     margin-bottom: 5rem;
 }
 
-.biography__content{
+.biography__content {
     margin-bottom: 3rem;
 }
 
+@media(min-width: 50rem) {
+    .biography__content__mix-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
 
-.biography__content h4{
+    .biography__content__mix-content div{
+        margin-bottom: 0rem;
+        flex-basis: 45%;
+    }
+    .biography__content__mix-content div:first-child{
+        order: 1;
+    }
+}
+
+.biography__content h4 {
     color: #000;
     font-weight: 400;
 }
 
-.biography__quote{
+.biography__quote {
     text-align: center;
     font-size: 2.2rem;
     margin-bottom: 2rem;
 }
 
-.biography__quote blockquote{
+.biography__quote blockquote {
     margin-bottom: 1.8rem;
 }
 
-.biography__quote cite::before{
+.biography__quote cite::before {
     content: '-';
 }
 
-.biography__text--centered{
+.biography__text--centered {
     text-align: center;
 }
 
-.biography__text--centered h2{
+.biography__text--centered h2 {
     margin-bottom: 2rem;
 }
 
-.biography__text--centered p{
+.biography__text--centered p {
     margin-bottom: 1.6rem;
 }
 
-.biography__mix-content{
+.biography__mix-content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
 }
 
-.mix-content__item{
-    flex-basis: 100%;
+.mix-content__item {
+    flex-basis: 18rem;
     flex-grow: 1;
 
     margin-bottom: 2rem;
+    margin-right: 1rem;
 }
 
-.mix-content__item p{
+.mix-content__item p {
     margin-bottom: 1rem;
 }
 
-.biography__img-cards{
+.biography__img-cards {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -79,8 +96,9 @@
     margin-bottom: 5rem;
 }
 
-.img-cards__item{
+.img-cards__item {
     flex-grow: 1;
-    flex-basis: 100%;
+    flex-basis: 13rem;
     margin-bottom: 2rem;
+    margin-right: 1rem;
 }

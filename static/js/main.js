@@ -7,6 +7,8 @@
             this.createSocialLinks();
             //create a scroll to top button
             this.createScrollTop();
+            //If on press page*, create the press webpage
+            this.createPress();
             //add event listeners
             this.registerEventListeners();
         },
@@ -20,6 +22,88 @@
                     this.goTopBtnFunction();
                 })
             }
+
+        },
+        createPress() {
+            //get the right page from the urlParams
+            let url = window.location.pathname;
+            let pathArray = url.split('/')
+            let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/',''); //press/index.html -> get the last part of the pathname from the url
+            //if on the press page start the fetch
+            if(currentPath === "press/index.html"){
+                console.log('on the press page, fetching data is started...')
+                let pressData = new fetchLocalData();
+                pressData.pressData(json => {
+                    console.log('The press data is fetched', json)
+                    this.populatePress(json);
+                }).catch(err => {console.error(err)});
+            }
+        },
+        populatePress(json){
+            //start populating the pressData
+            console.log('populating the received data has started...')
+            let $pressReleasesUL = document.querySelector('#press-releases')
+            let $inThePressUL = document.querySelector('#in-the-press')
+            let strInThePress = "";
+            let strPressReleases = "";
+
+            json.forEach(obj => {
+                console.log(obj)
+                if(obj.pressType === 'In the press'){
+                    strInThePress += `
+                    <li class="cards__item">
+                        <section class="cards__item__img">
+                            <img src="${obj.images[0]}"
+                                alt="">
+                        </section>
+                        <section class="cards__item__content">
+                            <div>
+                                <h4>${obj.titel}, ${obj.location}</h4>
+                            </div>
+                            <div>
+                                <h3>${obj.titel}</h3>
+                            </div>
+                            <div>
+                                <p>${obj.subtitel}</p>
+                            </div>
+                            <div class="cards__item__link">
+                                <a href="my-secret-garden-valencia/index.html">
+                                    Learn more
+                                </a>
+                            </div>
+                        </section>
+                    </li> `
+                } else if (obj.pressType === 'Press releases') {
+                    strPressReleases += `
+                    <li class="cards__item">
+                        <section class="cards__item__img">
+                            <img src="${obj.images[0]}"
+                                alt="">
+                        </section>
+                        <section class="cards__item__content">
+                            <div>
+                                <h4>${obj.titel}, ${obj.location}</h4>
+                            </div>
+                            <div>
+                                <h3>${obj.titel}</h3>
+                            </div>
+                            <div>
+                                <p>${obj.subtitel}</p>
+                            </div>
+                            <div class="cards__item__link">
+                                <a href="press/my-secret-garden-valencia/index.html">
+                                    Learn more
+                                </a>
+                            </div>
+                        </section>
+                    </li> `
+                } else {
+
+                }
+
+                $pressReleasesUL.innerHTML = strPressReleases;
+                $inThePressUL.innerHTML = strInThePress;
+            })
 
         },
         createScrollTop() {
@@ -45,8 +129,8 @@
         createNavigation() {
              //get the right page from the urlParams
              let url = window.location.pathname;
-             let currentPath = url.split('/')[url.split('/').length-1]; //index.html -> get the last part of the pathname from the url
- 
+             let pathArray = url.split('/')
+             let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/',''); //press/index.html -> get the last part of the pathname from the url
             //start populating the navitems in de navigation list class
             let $navbarUL = document.querySelector('.nav__list');
             $navbarUL.innerHTML = navItems.map(item => {
