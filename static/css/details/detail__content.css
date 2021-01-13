@@ -28,7 +28,7 @@
 
 .arts__images__list{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
 }
@@ -36,6 +36,7 @@
 .arts__images__list li{
     flex-basis: 30%;
     margin-right: 1rem;
+    margin-bottom: 1rem;
 }
 
 

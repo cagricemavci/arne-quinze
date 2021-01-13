@@ -4567,10 +4567,8 @@
     "title": "Satellite 'De Zoeker'",
     "subtitle": "Natural Chaos",
     "description": null,
-    "location": null,
-    "tags": [
-      "Atelier, Sint-Martens-Latem, Belgium"
-    ],
+    "location": "Atelier, Sint-Martens-Latem, Belgium",
+    "tags": [],
     "year": "2015",
     "cover": null,
     "images": [
@@ -6685,10 +6683,8 @@
     "title": "My Secret Garden",
     "subtitle": "Exhibition",
     "description": null,
-    "location": null,
-    "tags": [
-      "Kunsthal Rotterdam, the Netherlands"
-    ],
+    "location": "Kunsthal Rotterdam, the Netherlands",
+    "tags": [],
     "year": "2012",
     "cover": null,
     "images": [

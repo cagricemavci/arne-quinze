@@ -166,3 +166,21 @@ const socialLLinks = [
         </svg>`
     },
 ]
+
+const instaImages = [
+    {
+        path: "static/img/instagram_images/insta_image (1).jpg"
+    },
+    {
+        path: "static/img/instagram_images/insta_image (2).jpg"
+    },
+    {
+        path: "static/img/instagram_images/insta_image (3).jpg"
+    },
+    {
+        path: "static/img/instagram_images/insta_image (4).jpg"
+    },
+    {
+        path: "static/img/instagram_images/insta_image (5).jpg"
+    }
+]

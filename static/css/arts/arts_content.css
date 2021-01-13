@@ -1,0 +1,64 @@
+h2{
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+h3{
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+h3:last-child:not(:first-child){
+    color: #787878;
+}
+
+.art__filter__container ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.art__filter__container li{
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cat__filter__list li{
+    font-weight: bolder;
+}
+
+.art__cards__item{
+    margin-bottom: 6rem;
+}
+
+.art__card__item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-bottom: 3rem;
+}
+
+.card__content{
+    flex-basis: 30%;
+    text-align: right;
+}
+
+.card__images__list{
+    flex-basis: 60%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card__images__item{
+    flex-grow: 1;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
