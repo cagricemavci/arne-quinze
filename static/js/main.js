@@ -77,7 +77,7 @@
                     <li class="cards__item">
                         <section class="cards__item__img">
                             <img src="${obj.images[0]}"
-                                alt="">
+                                alt="" loading="lazy">
                         </section>
                         <section class="cards__item__content">
                             <div>
@@ -132,13 +132,13 @@
              //get the right page from the urlParams
              let url = window.location.pathname;
              let pathArray = url.split('/')
-             let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/',''); //press/index.html -> get the last part of the pathname from the url
+             let currentPath = pathArray.slice(pathArray.length - 3).join('/').replace('app/',''); //press/index.html -> get the last part of the pathname from the url
             //start populating the navitems in de navigation list class
             let $navbarUL = document.querySelector('.nav__list');
             $navbarUL.innerHTML = navItems.map(item => {
                 console.log('highlighting current page in the navigation...', currentPath, 'with the following items: ', item)
                 //highlight the current page in the navigation list items, by adding the class "current" to the list item
-                if(currentPath.includes(item.url)) {
+                if(currentPath.includes(item.urlFirstPart)) {
                     return `
                     <li class="nav__item current">
                         <a href="${item.url}">

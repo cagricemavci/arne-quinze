@@ -2,22 +2,27 @@ const navItems = [
     {
         name: "Art & Exhibitions",
         url: "art-and-exhibitions/index.html",
+        urlFirstPart: "art-and-exhibitions"
     },
     {
         name: "Biography",
         url: "biography.html",
+        urlFirstPart: "biography.html"
     },
     {
         name: "Atelier / Studio",
         url: "atelier-studio/index.html",
+        urlFirstPart: "atelier-studio"
     },
     {
         name: "Press",
         url: "press/index.html",
+        urlFirstPart: "press"
     },
     {
         name: "Contact",
         url: "contact.html",
+        urlFirstPart: "contact.html"
     }
 ]
 
