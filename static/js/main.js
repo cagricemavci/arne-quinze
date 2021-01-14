@@ -85,7 +85,7 @@
                 <li class="cards__item">
                 <section class="cards__item__img">
                     <img src="${x.images[0]}"
-                        alt="${x.titel}">
+                        alt="${x.titel}" loading="lazy">
                 </section>
                 <section class="cards__item__content">
                     <div>
