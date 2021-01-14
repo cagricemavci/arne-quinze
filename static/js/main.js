@@ -26,7 +26,7 @@
             }
 
         },
-        createInstaLinks(){
+        createInstaLinks() {
             document.querySelector('.insta__feed__list').innerHTML = instaImages.map(image => {
                 return `
                 <li class="insta__feed__item">
@@ -41,27 +41,31 @@
             //get the right page from the urlParams
             let url = window.location.pathname;
             let pathArray = url.split('/')
-            let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/',''); //press/index.html -> get the last part of the pathname from the url
+            let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
             //if on the press page OR on art page, start the fetch
-            if(currentPath === "press/index.html"){
+            if (currentPath === "press/index.html") {
                 console.log('on the press page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.pressData(json => {
                     console.log('The press data is fetched', json)
                     this.populatePress(json);
-                }).catch(err => {console.error(err)});
+                }).catch(err => {
+                    console.error(err)
+                });
             } else if (currentPath === "art-and-exhibitions/index.html") {
                 console.log('on the art page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.artData(json => {
                     console.log('The art data is fetched', json)
-                    this.populateArt(json);
-                }).catch(err => {console.error(err)});
+                    this.createArt(json);
+                }).catch(err => {
+                    console.error(err)
+                });
             } else {
                 console.log('no data is being fetched form local fetch')
             }
         },
-        populatePress(json){
+        populatePress(json) {
             //start populating the pressData
             console.log('populating with the received data has started...')
             let $pressReleasesUL = document.querySelector('#press-releases')
@@ -70,7 +74,7 @@
             let strPressReleases = "";
 
             json.forEach(obj => {
-                if(obj.pressType === 'In the press'){
+                if (obj.pressType === 'In the press') {
                     strInThePress += `
                     <li class="cards__item">
                         <section class="cards__item__img">
@@ -88,7 +92,7 @@
                                 <p>${obj.subtitel}</p>
                             </div>
                             <div class="cards__item__link">
-                                <a href="my-secret-garden-valencia/index.html">
+                                <a href="press/my-secret-garden-valencia/index.html">
                                     Learn more
                                 </a>
                             </div>
@@ -112,7 +116,7 @@
                                 <p>${obj.subtitel}</p>
                             </div>
                             <div class="cards__item__link">
-                                <a href="my-secret-garden-valencia/index.html">
+                                <a href="press/my-secret-garden-valencia/index.html">
                                     Learn more
                                 </a>
                             </div>
@@ -121,13 +125,11 @@
                 } else {
                     console.error('invalid json value', obj)
                 }
-
-                $pressReleasesUL.innerHTML = strPressReleases;
-                $inThePressUL.innerHTML = strInThePress;
             })
-
+            $pressReleasesUL.innerHTML = strPressReleases;
+            $inThePressUL.innerHTML = strInThePress;
         },
-        populateArt(json){
+        createArt(json) {
             //start populating the artPage
             console.log('populating with the received data has started...')
 
@@ -138,53 +140,139 @@
             //loop through data to gather year and tags info
             json.forEach(art => {
                 let year = String(art.year)
-                if(!(yearArray.indexOf(year) > -1)){
+                if (!(yearArray.indexOf(year) > -1)) {
                     yearArray.push(year) //push years uniquely to array
                 }
 
                 //get the tags info, also check if there isn't an empty tag array, in fetched data
                 let tags = art.tags;
                 tags.forEach(tag => {
-                   if ( tag.length >= 1 && !(tagArray.indexOf(tag) > -1) ) {
-                            tagArray.push(tag)
-                   }
+                    if (tag.length >= 1 && !(tagArray.indexOf(tag) > -1)) {
+                        tagArray.push(tag)
+                    }
                 })
-              
+
             })
-            yearArray.sort((a, b) => a + b) //sort the array in descending order
-            tagArray.sort((a, b) => a + b) //sort the array in descending order
+            yearArray = yearArray.sort((a, b) => a + b) //sort the array in descending order
+            tagArray = tagArray.sort((a, b) => a + b) //sort the array in descending order
             console.log('found following years in data: ', yearArray, 'found following tags in data: ', tagArray)
 
             //inject the data to the appropriate lists
-            document.querySelector('.cat__filter__list').innerHTML = tagArray.map(tag => {
+            //add view all button to this list
+            document.querySelector('.cat__filter__list').innerHTML = `
+                <li class="cat__filter__item" >
+                    <a href="art-and-exhibitions/index.html#" id="reset-filter-tag">View all</a>
+                </li>`
+
+            document.querySelector('.cat__filter__list').innerHTML += tagArray.map(tag => {
                 return `
                 <li class="cat__filter__item">
-                    <a href="#">${tag}</a>
+                    <a href="art-and-exhibitions/index.html#">${tag}</a>
                 </li>`
             }).join('')
 
-            document.querySelector('.year__filter__list').innerHTML = yearArray.map(year => {
+            //add view all button to this list
+            document.querySelector('.year__filter__list').innerHTML = `
+                <li class="year__filter__item">
+                    <a href="art-and-exhibitions/index.html#" id="reset-filter-year">View all</a>
+                </li>`
+
+            document.querySelector('.year__filter__list').innerHTML += yearArray.map(year => {
                 return `
                 <li class="year__filter__item">
-                    <a href="#">${year}</a>
+                    <a href="art-and-exhibitions/index.html#">${year}</a>
                 </li>`
             }).join('')
 
+            //add event listeners to the filters
+            let $tagsList = document.querySelectorAll('.cat__filter__list li a')
+            let $yearList = document.querySelectorAll('.year__filter__list li a')
+            $tagsList.forEach(tag => {
+                tag.addEventListener('click', event => {
+                    this.tagFilter = tag.innerText;
+                    this.fetchData();
+                    return false;
+
+                })
+            })
+
+            $yearList.forEach(year => {
+                year.addEventListener('click', event => {
+                    this.yearFilter = year.innerText;
+                    this.fetchData();
+                    return false;
+                })
+            })
+
+            //eventlisteners for the View All buttons 
+            document.querySelector('#reset-filter-tag').addEventListener('click', event => {
+                this.tagFilter = ''
+            })
+            document.querySelector('#reset-filter-year').addEventListener('click', event => {
+                this.yearFilter = ''
+            })
+
+            //arts page is prepared and the main content can be loaded to the page
+            this.populateArt(json)
+        },
+        populateArt(json) {
+            //check if a filter is used, filter json data accordingly
+            if (this.yearFilter !== undefined && this.yearFilter !== null && this.yearFilter !== '') {
+                console.log('year filter is used: ', this.yearFilter)
+                json = json.filter(x => {
+                    return x.year === this.yearFilter
+                })
+                //this.yearFilter = '';
+            }
+            if (this.tagFilter !== undefined && this.tagFilter !== null && this.tagFilter !== '') {
+                console.log('tag filter is used: ', this.tagFilter)
+                json = json.filter(x => {
+                    return x.tags.includes(this.tagFilter)
+                })
+                //this.tagFilter = '';
+            }
+
+            //loop through data to gather year and tags info
+            let yearArray = [];
+            let tagArray = [];
+            json.forEach(art => {
+                let year = String(art.year)
+                if (!(yearArray.indexOf(year) > -1)) {
+                    yearArray.push(year) //push years uniquely to array
+                }
+
+                //get the tags info, also check if there isn't an empty tag array, in fetched data
+                let tags = art.tags;
+                tags.forEach(tag => {
+                    if (tag.length >= 1 && !(tagArray.indexOf(tag) > -1)) {
+                        tagArray.push(tag)
+                    }
+                })
+
+            })
+            yearArray = yearArray.sort((a, b) => a + b) //sort the array in descending order
+            tagArray = tagArray.sort((a, b) => a + b) //sort the array in descending order
             //start populating the html content
-            let str = ''; 
+            let str = '';
             //for each year that's found in the data
             yearArray.forEach(year => {
-                let filteredByYear = json.filter(x => { return x.year === year}) //filter the arts that have the same year as current loop
+                let filteredByYear = json.filter(x => {
+                    return x.year === year
+                }) //filter the arts that have the same year as current loop
                 let strArtContent = '';
                 filteredByYear.forEach(art => {
                     strArtContent += `
                     <li class="art__card__item">
+                        
                             <div class="card__content">
+                            <a href="art-and-exhibitions/in-dialogue-with-calatrava/index.html">
                                 <h2>${art.title}</h2>
                                 <h3>${art.subtitle}</h3>
                                 <h3>${art.tags.map(tag => {return `
                                 ${tag}`}).join(' /')} - ${art.location}</h3>
+                                </a>
                             </div>
+                       
                             <ul class="card__images__list">
                                 ${art.images.map(img => {return `
                                     <li class="card__images__item">
@@ -197,30 +285,27 @@
                     </li>`
                 })
                 str += `
-                <li class="art__cards__item">
+                <li class="art__cards__item" id="${year}">
                     <div class="item__year">
                         <h2>${year}</h2>
                     </div>
                     <ul class="art__card__list">
                         ${strArtContent}
                     </ul>
-                   
+                
                 </li>`
             })
 
             document.querySelector('.art__cards__list').innerHTML = str;
-
-
-
         },
         createScrollTop() {
             let $body = document.querySelector('body')
-            $body.innerHTML += 
-            `<div id="goTopButton" class="hidden">
+            $body.innerHTML +=
+                `<div id="goTopButton" class="hidden">
                 <h3>Go to top</h3>
             </div>`
         },
-        hideGoTop () {
+        hideGoTop() {
             this.$goTopBtn = document.querySelector("#goTopButton")
             let currentPosi = window.scrollY;
             if (currentPosi > 100) {
@@ -237,15 +322,15 @@
             })
         },
         createNavigation() {
-             //get the right page from the urlParams
-             let url = window.location.pathname;
-             let pathArray = url.split('/')
-             let currentPath = pathArray.slice(pathArray.length - 3).join('/').replace('app/',''); //press/index.html -> get the last part of the pathname from the url
+            //get the right page from the urlParams
+            let url = window.location.pathname;
+            let pathArray = url.split('/')
+            let currentPath = pathArray.slice(pathArray.length - 3).join('/').replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
             //start populating the navitems in de navigation list class
             let $navbarUL = document.querySelector('.nav__list');
             $navbarUL.innerHTML = navItems.map(item => {
                 //highlight the current page in the navigation list items, by adding the class "current" to the list item
-                if(currentPath.includes(item.urlFirstPart)) {
+                if (currentPath.includes(item.urlFirstPart)) {
                     console.log('highlighting current page in the navigation...', currentPath, 'with the following items: ', item)
                     return `
                     <li class="nav__item current">
@@ -254,7 +339,7 @@
                         </a>
                     </li>`
                 } else {
-                      return `
+                    return `
                     <li class="nav__item">
                         <a href="${item.url}">
                             ${item.name}
