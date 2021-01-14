@@ -70,8 +70,82 @@
                 }).catch(err => {
                     console.error(err)
                 });
+            } else if (currentPath === "/index.html") {
+                console.log('on the home page, fetching data is started...')
+                let fetchData = new fetchLocalData();
+                fetchData.atelierData(json => {
+                    console.log('The atelier data is fetched', json)
+                    this.randomHomePage('atelier', json);
+                }).catch(err => {
+                    console.error(err)
+                });
+
+                fetchData.artData(json => {
+                    console.log('The art data is fetched', json)
+                    this.randomHomePage('art', json);
+                }).catch(err => {
+                    console.error(err)
+                });
+
             } else {
                 console.log('no data is being fetched from local fetch')
+            }
+        },
+        randomHomePage(str, json){
+
+            //check if its atelier data or art data that is fetched. populate the appropriate list from the home page
+            if(str === 'atelier'){
+                //1. slice to get the first 3, 2. map en join to list element
+                document.querySelector('.atelier').innerHTML = json.slice(0, 3).map(x => { 
+                    return `  <li class="cards__item">
+                                <section class="cards__item__img">
+                                    <img src="${x.images[0]}"
+                                        alt="${x.titel}">
+                                </section>
+                                <section class="cards__item__content">
+                                    <div>
+                                        <h4>${x.subtitel}</h4>
+                                    </div>
+                                    <div>
+                                        <h3>${x.titel}</h3>
+                                    </div>
+                                    <div>
+                                        <p>${x.synopsis}</p>
+                                    </div>
+                                    <div class="cards__item__link">
+                                        <a href="atelier-studio/visiting-mons-again/index.html">
+                                            Learn more
+                                        </a>
+                                    </div>
+                                </section>
+                            </li>`}).join('')
+            } else if (str === 'art') {
+                //1.filter to get the highlight -true- data 2. slice to have 3. 4. map and join to list element
+                document.querySelector('.art').innerHTML = json.filter(x => { return x.highlight === true}).slice(0, 3).map(x => {
+                    return `
+                    <li class="cards__item">
+                        <section class="cards__item__img">
+                            <img src="static/img/arts/${x.images[0]}"
+                                alt="${x.titel}">
+                        </section>
+                        <section class="cards__item__content">
+                            <div>
+                                <h4>${x.titel} - ${x.location}</h4>
+                            </div>
+                            <div>
+                                <h3>${x.titel}</h3>
+                            </div>
+                            <div>
+                                <p>${x.subtitel}</p>
+                            </div>
+                            <div class="cards__item__link">
+                                <a href="art-and-exhibitions/in-dialogue-with-calatrava/index.html">
+                                    Learn more
+                                </a>
+                            </div>
+                        </section>
+                    </li>`
+                }).join('')
             }
         },
         populateAtelier(json) {
