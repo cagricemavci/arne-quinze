@@ -61,9 +61,49 @@
                 }).catch(err => {
                     console.error(err)
                 });
+            } else if (currentPath === "atelier-studio/index.html") {
+                console.log('on the atelier page, fetching data is started...')
+                let fetchData = new fetchLocalData();
+                fetchData.atelierData(json => {
+                    console.log('The atelier data is fetched', json)
+                    this.populateAtelier(json);
+                }).catch(err => {
+                    console.error(err)
+                });
             } else {
-                console.log('no data is being fetched form local fetch')
+                console.log('no data is being fetched from local fetch')
             }
+        },
+        populateAtelier(json) {
+            //start populating the atelierData
+            console.log('populating with the received data has started...')
+            let $atelierUL = document.querySelector('.cards__list')
+            let str = '';
+
+            $atelierUL.innerHTML = json.map(x => { 
+                return `
+                <li class="cards__item">
+                <section class="cards__item__img">
+                    <img src="${x.images[0]}"
+                        alt="${x.titel}">
+                </section>
+                <section class="cards__item__content">
+                    <div>
+                        <h4>${x.subtitel}</h4>
+                    </div>
+                    <div>
+                        <h3>${x.titel}</h3>
+                    </div>
+                    <div>
+                        <p>${x.synopsis}</p>
+                    </div>
+                    <div class="cards__item__link">
+                        <a href="atelier-studio/visiting-mons-again/index.html">
+                            Learn more
+                        </a>
+                    </div>
+                </section>
+            </li>`}).join('')
         },
         populatePress(json) {
             //start populating the pressData
@@ -102,8 +142,8 @@
                     strPressReleases += `
                     <li class="cards__item">
                         <section class="cards__item__img">
-                            <img src="${obj.images[0]}"
-                                alt="" loading="lazy">
+                            <img src="${(obj.images[0] !== null) ? obj.images[0] : imageNotFound }"
+                                alt="${obj.titel}" loading="lazy">
                         </section>
                         <section class="cards__item__content">
                             <div>
@@ -277,7 +317,7 @@
                                 ${art.images.map(img => {return `
                                     <li class="card__images__item">
                                         <div>
-                                            <img src="static/img/arts/${img}" alt="image of ${art.title}" loading="lazy">
+                                            <img src="${(img !== null)? `static/img/arts/` + img : imageNotFound}" alt="image of ${art.title}" loading="lazy">
                                         </div>
                                     </li>`
                                 }).join('')}

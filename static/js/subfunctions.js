@@ -12,4 +12,11 @@ function fetchLocalData() {
         let data = await response.json();
         return await callback(data);
     }
+
+    this.atelierData = async (callback) => {
+        console.log('fetch is initiated')
+        let response = await fetch('data/atelier.json');
+        let data = await response.json();
+        return await callback(data);
+    }
 }

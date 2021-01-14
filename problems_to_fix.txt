@@ -1,3 +1,1 @@
-the arts aren't loaded chronological
-click from art to detail of art page. make the LI -> A href
 Don't forget* home page need 6 dynamically loaded arts

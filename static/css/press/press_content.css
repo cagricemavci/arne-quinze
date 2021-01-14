@@ -107,7 +107,7 @@ article {
 .press__images{
    display: flex;
    justify-content: flex-start;
-   align-items: flex-start;
+   align-items: flex-end;
    flex-wrap: wrap;
 
 }

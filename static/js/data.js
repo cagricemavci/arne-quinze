@@ -184,3 +184,5 @@ const instaImages = [
         path: "static/img/instagram_images/insta_image (5).jpg"
     }
 ]
+
+const imageNotFound = 'static/img/not_found_img/image_not_found.jpg'
