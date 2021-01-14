@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.h-layout {
+.centered--width {
     margin: auto;
     width: 90rem;
     max-width: 100%;

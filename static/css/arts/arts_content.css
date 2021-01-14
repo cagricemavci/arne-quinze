@@ -58,7 +58,8 @@ h3:last-child:not(:first-child){
 }
 
 .card__images__item{
-    flex-grow: 1;
+    flex-grow: 0;
+    width: 15rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
 }
