@@ -112,7 +112,7 @@
                                 <p>${obj.subtitel}</p>
                             </div>
                             <div class="cards__item__link">
-                                <a href="press/my-secret-garden-valencia/index.html">
+                                <a href="my-secret-garden-valencia/index.html">
                                     Learn more
                                 </a>
                             </div>
