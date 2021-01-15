@@ -67,7 +67,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (url.includes("index.html") ) {
+            } else if (url.includes("/index.html") ) {
                 console.log('on the home page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
@@ -124,17 +124,17 @@
                     <li class="cards__item">
                         <section class="cards__item__img">
                             <img src="static/img/arts/${x.images[0]}"
-                                alt="${x.titel}">
+                                alt="${x.title}">
                         </section>
                         <section class="cards__item__content">
                             <div>
-                                <h4>${x.titel} - ${x.location}</h4>
+                                <h4>${x.title} - ${x.location}</h4>
                             </div>
                             <div>
-                                <h3>${x.titel}</h3>
+                                <h3>${x.title}</h3>
                             </div>
                             <div>
-                                <p>${x.subtitel}</p>
+                                <p>${x.subtitle}</p>
                             </div>
                             <div class="cards__item__link">
                                 <a href="art-and-exhibitions/in-dialogue-with-calatrava/index.html">
