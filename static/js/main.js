@@ -40,13 +40,7 @@
         fetchData() {
             //get the right page from the urlParams
             let url = window.location.href;
-            console.log('check1: ', url)
-            let currentPath = url.replace(window.origin, '');
-            console.log('checker2: ', currentPath)
-            //let pathArray = url.split('/')
-            //let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
-            //if on the press page OR on art page, start the fetch
-            if (currentPath === "/press/index.html") {
+            if (url.includes("/press/index.html")) {
                 console.log('on the press page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.pressData(json => {
@@ -55,7 +49,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "/art-and-exhibitions/index.html") {
+            } else if (url.includes("/art-and-exhibitions/index.html") ) {
                 console.log('on the art page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.artData(json => {
@@ -64,7 +58,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "/atelier-studio/index.html") {
+            } else if (url.includes("/atelier-studio/index.html") ) {
                 console.log('on the atelier page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
@@ -73,7 +67,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "index.html") {
+            } else if (url.includes("index.html") ) {
                 console.log('on the home page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
