@@ -40,8 +40,9 @@
         fetchData() {
             //get the right page from the urlParams
             let url = window.location.href;
+            console.log('check1: ', url)
             let currentPath = url.replace(window.origin, '');
-            console.log('checker1: ', currentPath)
+            console.log('checker2: ', currentPath)
             //let pathArray = url.split('/')
             //let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
             //if on the press page OR on art page, start the fetch
@@ -72,7 +73,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "/index.html") {
+            } else if (currentPath === "index.html") {
                 console.log('on the home page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
@@ -91,7 +92,7 @@
 
             } else {
               
-                console.log('no data is being fetched from local fetch, currently on following page: ', window.location)
+                console.log('no data is being fetched from local fetch, currently on following page: ', window.document)
             }
         },
         randomHomePage(str, json){
