@@ -39,11 +39,13 @@
         },
         fetchData() {
             //get the right page from the urlParams
-            let url = window.location.pathname;
-            let pathArray = url.split('/')
-            let currentPath = pathArray.slice(pathArray.length - 2).join('/')//.replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
+            let url = window.location.href;
+            let currentPath = url.replace(window.origin, '');
+            console.log('checker1: ', currentPath)
+            //let pathArray = url.split('/')
+            //let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
             //if on the press page OR on art page, start the fetch
-            if (currentPath === "press/index.html") {
+            if (currentPath === "/press/index.html") {
                 console.log('on the press page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.pressData(json => {
@@ -52,7 +54,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "art-and-exhibitions/index.html") {
+            } else if (currentPath === "/art-and-exhibitions/index.html") {
                 console.log('on the art page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.artData(json => {
@@ -61,7 +63,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "atelier-studio/index.html") {
+            } else if (currentPath === "/atelier-studio/index.html") {
                 console.log('on the atelier page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
@@ -70,7 +72,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "app/index.html") {
+            } else if (currentPath === "/index.html") {
                 console.log('on the home page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
@@ -88,7 +90,8 @@
                 });
 
             } else {
-                console.log('no data is being fetched from local fetch')
+              
+                console.log('no data is being fetched from local fetch, currently on following page: ', window.location)
             }
         },
         randomHomePage(str, json){
