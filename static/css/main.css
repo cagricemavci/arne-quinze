@@ -28,13 +28,13 @@
     margin-bottom: 1.6rem;
 }
 .offset--left {
-    width: calc(100% + 8vw);
-    margin-left: -8vw;
+    width: calc(100% + 2rem);
+    margin-left: -2rem;
 }
 
 .offset--right {
-    width: calc(100% + 8vw);
-    margin-right: -8vw;
+    width: calc(100% + 2rem);
+    margin-right: -2rem;
 }
 
 #goTopButton{
