@@ -41,7 +41,7 @@
             //get the right page from the urlParams
             let url = window.location.pathname;
             let pathArray = url.split('/')
-            let currentPath = pathArray.slice(pathArray.length - 2).join('/').replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
+            let currentPath = pathArray.slice(pathArray.length - 2).join('/')//.replace('app/', ''); //press/index.html -> get the last part of the pathname from the url
             //if on the press page OR on art page, start the fetch
             if (currentPath === "press/index.html") {
                 console.log('on the press page, fetching data is started...')
@@ -70,7 +70,7 @@
                 }).catch(err => {
                     console.error(err)
                 });
-            } else if (currentPath === "/index.html") {
+            } else if (currentPath === "app/index.html") {
                 console.log('on the home page, fetching data is started...')
                 let fetchData = new fetchLocalData();
                 fetchData.atelierData(json => {
